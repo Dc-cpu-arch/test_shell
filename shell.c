@@ -11,7 +11,7 @@ int main (void)
 {
 	ssize_t bytes_of_char;
 	size_t num_of_bytes = 0;
-	char *sstr = NULL;
+	char *sstr = "open";
 
 	while (strcmp(sstr, "exit") != 0)
 	{
@@ -25,7 +25,7 @@ int main (void)
 		}
 		else
 			printf("%s", sstr);
-		free (sstr);
 	}
+	free(sstr);
 	return (0);
 }
