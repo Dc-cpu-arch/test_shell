@@ -5,5 +5,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <signal.h>
 
 #endif /* SHELL_H_ */
