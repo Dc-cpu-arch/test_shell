@@ -75,7 +75,7 @@ $ echo Hello World!
 ### NON-INTERACTIVE MODE:
 
 ```
-$ echo <commands and arguments> | ./simple_shell
+$ echo <commands and arguments> | ./hsh
 ```
 EXAMPLE:
 
@@ -115,7 +115,7 @@ total 140
 ### AUTHORS
 * **Valeria Trujillo Rodriguez** - [valeria2426](https://github.com/valeria2426) :sunglasses:
 * **Nicolás Urrea Rangel** - [Nicolas](https://github.com/Nicolas) :sunglasses:
-* **Camilo Garzon** - [Camilo Garzon](https://github.com/Dc-cpu-arch) :cat:
+* **Camilo Garzon** - [Camilo Garzon](https://github.com/Dc-cpu-arch) :sunglasses:
 
 
 [contributors-shield]: https://img.shields.io/github/contributors/valeria2426/simple_shell?style=flat-square
