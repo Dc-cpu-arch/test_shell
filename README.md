@@ -17,10 +17,10 @@ Let us introduce Shelldon, our simple_shell project that must have the same beha
 ## RESOURCES :books:
 </div>
 
-* [Introduction to Linux Shell and Shell Scripting](https://www.geeksforgeeks.org/introduction-linux-shell-shell-scripting/)
-* [Tutorial - Write a Shell in C](https://brennan.io/2015/01/16/write-a-shell-in-c/)
+* [Unix shell](https://www.geeksforgeeks.org/introduction-linux-shell-shell-scripting/)
+* [Thompson shell](https://brennan.io/2015/01/16/write-a-shell-in-c/)
 
-* [Building a Linux Shell in C](https://medium.com/@josefgoodyear/building-a-linux-shell-in-c-8be5e109458b)
+* [ken Thompson](https://medium.com/@josefgoodyear/building-a-linux-shell-in-c-8be5e109458b)
 
 * [Making your own Linux Shell in C](https://www.geeksforgeeks.org/making-linux-shell-c/)
 
