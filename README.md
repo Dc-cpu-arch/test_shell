@@ -6,9 +6,6 @@
 
 
 
-<div align="/home/valeria/Imágenes/realidad-virtual-y-aumentada-1.jpg"><img src="images/image_readme_shell.gif" width="700" height="300" />
-
-
 # Simple Shell (Shelldon)
 Let us introduce Shelldon, our simple_shell project that must have the same behavior thah sh shell in output and error. Our goal was to learn develop teamwork and imporve individual skills reagarding code.
 
