@@ -6,7 +6,7 @@
 
 
 
-<div align="center"><img src="images/image_readme_shell.gif" width="700" height="300" />
+<div align="/home/valeria/Imágenes/realidad-virtual-y-aumentada-1.jpg"><img src="images/image_readme_shell.gif" width="700" height="300" />
 
 
 # Simple Shell (Shelldon)
