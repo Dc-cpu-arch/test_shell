@@ -113,28 +113,6 @@ total 140
 
 ---
 
-## USAGE: :heavy_exclamation_mark: :heavy_exclamation_mark:
-
-</div>
-
-* SETENV:
-```
-$ setenv <MYVAR> <myvalue>
-```
-
-* UNSETENV
-```
-$ unsetenv <MYVAR>
-```
-
-* env
-```
-$ env 
-```
-
-<div align="center"><img src="images/env.png" width="480" height="150" /> </div>
-
-
 ---
 
 ### AUTHORS
