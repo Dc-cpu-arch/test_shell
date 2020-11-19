@@ -1,15 +1,18 @@
 #include "shell.h"
+#define BUFFER 1024
 
 int main(void)
 {
-	char sstr[100] = "ls";
+	ssize_t bytes_of_char;
+	size_t num_of_bytes = 0;
+	char *sstr = malloc(sizeof(char) * BUFFER);
 	char *arg[1];
 	arg[0] = sstr;
 	arg[1] = NULL;
-	char pat[100] = "/bin/";
+	char pat[BUFFER] = "/bin/";
 
-	printf("Before strcat, pat: %s and sstr: %s\n", pat,sstr);
-
+	bytes_of_char = getline(&sstr, &num_of_bytes, stdin);
+	strcat(pat, sstr);
 	printf ("pat: %s sstr: %s\n", pat, sstr);
-	execv(pat, arg);
+	execv("/bin/ls", arg);
 }
