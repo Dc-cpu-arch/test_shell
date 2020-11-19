@@ -1,4 +1,5 @@
 #include "shell.h"
+#define BUFFER 1024
 
 /**
  *
@@ -11,50 +12,45 @@ int main(void)
 {
 	ssize_t bytes_of_char;
 	size_t num_of_bytes = 0;
-	char *sstr = "entry";
+	char *sstr = malloc(sizeof(char) * BUFFER);
 	pid_t child;
-	char *arg[1];
-	arg[0] = sstr;
-	arg[1] = NULL;
+	char *arg[] = {sstr, NULL};
+	char pat[BUFFER] = "/bin/";
 
 	while (sstr)
 	{
-		printf("$ Process PID %d\n", getpid());
+		printf("$ ");
 		bytes_of_char = getline(&sstr, &num_of_bytes, stdin);
 
+		if (bytes_of_char <= 1)
+		{
+			puts("You need to enter something");
+		}
 		if (sstr[bytes_of_char - 1] == '\n')
 			sstr[bytes_of_char - 1] = '\0';
 
 		if (strcmp(sstr, "exit") == 0)
 		{
 			puts("you typed exit!");
-			free(sstr);
 			return (1);
 		}
 
-		if (strcmp(sstr, "ls") == 0)
+		if (sstr)
 		{
 			child = fork();
-			//ir al directorio /bin/"command"
-			execv("/bin/ls", arg);
 			if (child == 0)
 			{
-				printf("command Child Process # %d\n", getpid());
-				kill (child, SIGKILL);
+				strcat(pat, sstr);
+				//ir al directorio /bin/"command"
+				//kill (child, SIGKILL);
+				execv(pat, arg);
+				printf("\n");
 			}
-		}
-
-		if (bytes_of_char <= 1)
-		{
-			puts("You need to enter something");
-			free(sstr);
-			return (1);
 		}
 		else
 		{
-			printf("%s\n", sstr);
+			printf("%s command not found\n", sstr);
 		}
 	}
-	free(sstr);
 	return (0);
 }
