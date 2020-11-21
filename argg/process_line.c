@@ -37,7 +37,7 @@ char **split_line(char *line)
 {
 	int bufsz = BUFSZ;
 	int i = 0;
-	char **tokens = malloc(bufsize * sizeof(char*));
+	char **tokens = malloc(bufsz * sizeof(char*));
 	char *token;
 
 	if (!tokens) {
