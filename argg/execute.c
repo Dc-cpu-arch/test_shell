@@ -20,7 +20,6 @@ void execute(char *path, char *args)
 	else if (pid == 0)
 	{
 		if ((execve(path[0], args, NULL) == -1))
-               o if ((exec(path, args) == -1))
 		{
 			perror("Does not execute, write valid command");
 			free(path);

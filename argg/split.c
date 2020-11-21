@@ -9,13 +9,13 @@ char **split(char *sstr)
 	char *Copy;
 	Copy = strdup(sstr);
 	first_clean = strtok(Copy, " \n\t");
-	while (first_Clean != NULL)
+	while (first_clean != NULL)
 	{
 		first_clean = strtok(NULL, " \n\t");
 		counter++;
 	}
 	free(Copy);
-	space = malloc(sizeof(char *) * (counter + 1));
+	sstr = malloc(sizeof(char *) * (counter + 1));
 	token = strtok(sstr, " \n\t");
 	while (token != NULL)
 	{
