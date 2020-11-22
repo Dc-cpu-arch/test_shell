@@ -8,11 +8,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-void floop(void);
-char *read_line(void);
+extern char **environ;
+void floop(char * envp[]);
+char *read_line(char * envp[]);
 char **split_line(char *line);
 void enviromentShell(char **sstr);
-void execute(char *path, char *args);
+int execute(char *path, char **args, char * envp[]);
+int cmp(char *line, char * envp[]);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
