@@ -1,1 +1,0 @@
-ubuntu@DESKTOP-KUUNDHL.1574

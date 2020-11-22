@@ -7,7 +7,7 @@
  *
  */
 
-char *read_line(char * envp[])
+char *read_line(void)
 {
 	char *line = NULL;
 	size_t bufsz = 0;
@@ -24,8 +24,15 @@ char *read_line(char * envp[])
 			exit(EXIT_FAILURE);
 		}
 	}
-	cmp(line, envp);
-	return (line);
+
+	if (cmp(line) == 99)
+	{
+		free (line);
+		exit(EXIT_SUCCESS);
+		return (0);
+	}
+	else
+		return (line);
 }
 
 /**

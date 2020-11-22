@@ -2,10 +2,10 @@
 
 int execute(char *line, char **args, char * envp[])
 {
-	//pid_t my_pid;
 	pid_t pid;
 	int status;
 	pid = fork();
+	int i = 0;
 
 	if (pid > 0)
 	{
@@ -18,17 +18,24 @@ int execute(char *line, char **args, char * envp[])
 		free(args);
 		return(0);
 	}
-	else if (pid == 0)
+	else
 	{
-		printf ("line is %s\n", line);
 		if ((execv(line, args) == -1))
 		{
-			if (cmp(line, envp) == -1)
+			if (cmp(line) == 1)
 			{
 			perror("Does not execute, write valid command");
 			free(line);
 			free(args);
 			return(0);
+			}
+			else if (cmp(line) == 0)
+			{
+				for (i = 0; envp[i] != NULL; i++)
+				{
+					printf("%s\n", envp[i]);
+				}
+				return(0);
 			}
 		}
 	}
