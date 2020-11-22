@@ -24,10 +24,10 @@ int execute(char *line, char **args, char * envp[])
 		{
 			if (cmp(line) == 1)
 			{
-			perror("Does not execute, write valid command");
-			free(line);
-			free(args);
-			return(0);
+				perror("Does not execute, write valid command");
+				free(line);
+				free(args);
+				return(0);
 			}
 			else if (cmp(line) == 0)
 			{
@@ -35,6 +35,8 @@ int execute(char *line, char **args, char * envp[])
 				{
 					printf("%s\n", envp[i]);
 				}
+				free (line);
+				free(args);
 				return(0);
 			}
 		}
