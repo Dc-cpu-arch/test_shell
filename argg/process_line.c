@@ -7,10 +7,10 @@
  *
  */
 
-char *read_line(void)
+char *read_line(char * envp[])
 {
 	char *line = NULL;
-	ssize_t bufsz = 0;
+	size_t bufsz = 0;
 
 	if (getline(&line, &bufsz, stdin) == -1)
 	{
@@ -24,6 +24,7 @@ char *read_line(void)
 			exit(EXIT_FAILURE);
 		}
 	}
+	cmp(line, envp);
 	return (line);
 }
 
@@ -32,14 +33,12 @@ char *read_line(void)
  *
  *
  */
-
 char **split_line(char *line)
 {
 	int bufsz = BUFSZ;
 	int i = 0;
 	char **tokens = malloc(bufsz * sizeof(char*));
 	char *token;
-
 	if (!tokens) {
 		fprintf(stderr, "Error allocating memory\n");
 		exit(EXIT_FAILURE);

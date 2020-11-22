@@ -6,20 +6,18 @@
  *
  */
 
-void floop(void)
+void floop(char * envp[])
 {
 	char *line;
-	//char **args;
+	char **args;
 	int status;
-	int i = 6;
 
 	do {
 		printf("$ ");
-		line = read_line();
-		//args = split_line();
-		//status = executee(args);
-
+		line = read_line(envp);
+		args = split_line(line);
+		status = execute(line, args, envp);
 		free(line);
-		//free(args);
-	} while (i == 6);
+		free(args);
+	} while (status == 1);
 }
