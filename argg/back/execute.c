@@ -5,7 +5,7 @@ int execute(char *line, char **args, char * envp[])
 	pid_t pid;
 	int status;
 	pid = fork();
-	int i = 0;
+	unsigned int i, length;
 
 	if (pid > 0)
 	{
@@ -31,9 +31,12 @@ int execute(char *line, char **args, char * envp[])
 			}
 			else if (cmp(line) == 0)
 			{
-				for (i = 0; envp[i] != NULL; i++)
+				while (envp[i])
 				{
-					printf("%s\n", envp[i]);
+					length = _strlen(envp[i]);
+					write(STDOUT_FILENO, envp[i], length);
+					write(STDOUT_FILENO, "\n", 1);
+					++i;
 				}
 				return(0);
 			}
