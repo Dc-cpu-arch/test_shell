@@ -35,7 +35,7 @@ int execute(char *line, char **args, char * envp[])
 			}
 			else if (cmp(line) == 1)
 			{
-				execve(path(line), args, NULL);
+				path(line, args);
 				perror("Does not execute, write valid command");
 				return(0);
 			}
