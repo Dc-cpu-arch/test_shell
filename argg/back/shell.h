@@ -8,6 +8,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+typedef struct stat stat_t;
+
 extern char **environ;
 void floop(char * envp[]);
 char *read_line(void);
@@ -18,6 +20,7 @@ int cmp(char *line);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
-
+char *_getpath(void);
+char *path(char *line);
 
 #endif /* SHELL_H */
