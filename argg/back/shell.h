@@ -22,6 +22,7 @@ char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *_getpath(void);
-char *path(char *line);
+int path(char *line, char **args);
+char *_strdup(char *str);
 
 #endif /* SHELL_H */
