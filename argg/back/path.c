@@ -8,24 +8,24 @@ char *path(char *line)
 {
 	struct stat st;
 	char *copy, *tokens, *command;
-	char *path, *addres;
+	char *path, *address;
 	int i;
 
 	copy = _getpath();
-	command = str_concat("/", line);
-	addres = _strdup(line);
-	token = strtok(copy, ":");
+	command = _strcat("/", line);
+	address = _strdup(line);
+	tokens = strtok(copy, ":");
 
-	for (i = 0; token != NULL; i++)
+	for (i = 0; tokens != NULL; i++)
 	{
-		path = str_concat(token, command);
+		path = _strcat(tokens, command);
 		if (stat(path, &st) == 0)
 		{
-			free(addres);
-			addres = NULL;
-			adress = _strdup(path);
+			free(address);
+			address = NULL;
+			address = _strdup(path);
 		}
-		token = strtok(NULL, ":");
+		tokens = strtok(NULL, ":");
 		free(path);
 		path = NULL;
 	}
@@ -33,7 +33,7 @@ char *path(char *line)
 	copy = NULL;
 	free(command);
 	command = NULL;
-	retrun (addres)
+	return (address);
 }
 
 /**
