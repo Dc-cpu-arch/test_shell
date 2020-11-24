@@ -6,6 +6,8 @@
  */
 int path(char *line, char **args)
 {
+	printf("Esta linea se ejecuta en path\n");
+
 	char *copy, *tokens, *command;
 	char *path, *address;
 	int i;
