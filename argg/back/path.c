@@ -55,12 +55,18 @@ int path(char *line, char **args)
 char *_getpath(void)
 {
     int index = 0;
+    char *copy = NULL;
 
     if (!environ || !*environ)
         return (NULL);
 
-    while (strncmp(environ[index], "PATH=", 5))
-	    index++;
-
-    return (environ[index]);
+    for (i = 0; environ[i] != NULL; i++)
+    {
+	if (strncmp(environ[index], "PATH=", 5) == 0)
+	{
+		copy = strdup(environ[i]);
+		return (copy);
+	}
+    }
+    return (NULL);
 }
