@@ -5,7 +5,7 @@ int execute(char *line, char **args, char * envp[])
 	pid_t pid;
 	int status;
 	pid = fork();
-	unsigned int i, length;
+	unsigned int i = 0, length;
 
 	if (pid > 0)
 	{
@@ -20,16 +20,9 @@ int execute(char *line, char **args, char * envp[])
 	}
 	else
 	{
-		if ((execv(line, args) == -1))
+		if ((execve(line, args, NULL) == -1))
 		{
-			if (cmp(line) == 1)
-			{
-			perror("Does not execute, write valid command");
-			free(line);
-			free(args);
-			return(0);
-			}
-			else if (cmp(line) == 0)
+			if (cmp(line) == 0)
 			{
 				while (envp[i])
 				{
@@ -38,6 +31,11 @@ int execute(char *line, char **args, char * envp[])
 					write(STDOUT_FILENO, "\n", 1);
 					++i;
 				}
+				return(0);
+			}
+			else if (cmp(line) == 1)
+			{
+				perror("Does not execute, write valid command");
 				return(0);
 			}
 		}
