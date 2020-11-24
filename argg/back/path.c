@@ -4,12 +4,13 @@
  *
  *
  */
-char *path(char *line)
+int path(char *line, char **args)
 {
-	struct stat st;
 	char *copy, *tokens, *command;
 	char *path, *address;
 	int i;
+
+	struct stat st;
 
 	copy = _getpath();
 	command = _strcat("/", line);
@@ -24,7 +25,9 @@ char *path(char *line)
 			free(address);
 			address = NULL;
 			address = _strdup(path);
+			return (execve(address, args, NULL));
 		}
+		free(tokens);
 		tokens = strtok(NULL, ":");
 		free(path);
 		path = NULL;
@@ -33,7 +36,7 @@ char *path(char *line)
 	copy = NULL;
 	free(command);
 	command = NULL;
-	return (address);
+	return (-1);
 }
 
 /**
