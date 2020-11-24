@@ -35,7 +35,9 @@ int execute(char *line, char **args, char * envp[])
 			}
 			else if (cmp(line) == 1)
 			{
+				printf("esta linea se ejecuta antes de path\n");
 				path(line, args);
+				printf("esta linea se ejecuta después de path\n");
 				perror("Does not execute, write valid command");
 				return(0);
 			}
