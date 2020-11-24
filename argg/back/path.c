@@ -54,7 +54,7 @@ int path(char *line, char **args)
  */
 char *_getpath(void)
 {
-    int index = 0;
+    int i = 0;
     char *copy = NULL;
 
     if (!environ || !*environ)
@@ -62,7 +62,7 @@ char *_getpath(void)
 
     for (i = 0; environ[i] != NULL; i++)
     {
-	if (strncmp(environ[index], "PATH=", 5) == 0)
+	if (strncmp(environ[i], "PATH=", 5) == 0)
 	{
 		copy = strdup(environ[i]);
 		return (copy);
