@@ -6,8 +6,6 @@
  */
 int path(char *line, char **args)
 {
-	printf("Esta linea se ejecuta en path\n");
-
 	char *copy, *tokens, *command;
 	char *path, *address;
 	int i;
@@ -15,12 +13,13 @@ int path(char *line, char **args)
 	struct stat st;
 
 	copy = _getpath();
-	command = _strcat("/", line);
+	command = _strcat(line, "/");
 	address = _strdup(line);
 	tokens = strtok(copy, ":");
 
 	for (i = 0; tokens != NULL; i++)
 	{
+		printf("Esta linea se ejecuta en path\n");
 		path = _strcat(tokens, command);
 		if (stat(path, &st) == 0)
 		{
