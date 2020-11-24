@@ -6,23 +6,26 @@
  */
 int path(char *line, char **args)
 {
-	char *copy, *tokens, *tmp, *tmp2, *command;
+	char *copy, *tokens, *tmp, *command;
 	char *path, *address;
-	int i;
+	char tmp2[1] = "/";
+	//int i;
+	char *tokens2;
 
 	struct stat st;
 
 	copy = _getpath();
-	printf("command");
 	tmp = _strdup(line);
-	tmp2 = "/";
 	address = _strdup(line);
-	tokens = strtok(copy, ":");
+	tokens = strtok(copy, "PATH=");
+	tokens2 = strtok(tokens, ":");
 	command = strcat(tmp2, tmp);
 
-	for (i = 0; tokens != NULL; i++)
+	printf("tokens = %s\n", tokens);
+	//for (i = 0; tokens2 != NULL; i++)
+	for (tokens2 = strtok(tokens, ":"); tokens2; tokens2 = strtok('\0', " "))
 	{
-		path = _strcat(tokens, tmp2);
+		path = _strcat(tokens2, command);
 		printf("address is =%s\n path = %s\n command is %s\n", address, path, command);
 		if (stat(path, &st) == 0)
 		{
@@ -32,10 +35,10 @@ int path(char *line, char **args)
 			address = _strdup(path);
 			return (execve(address, args, NULL));
 		}
-		free(tokens);
-		tokens = strtok(NULL, ":");
+		//printf("val of i is %d", i);
+		//free(tokens2);
+		//tokens = strtok(NULL, ":");
 		free(path);
-		path = NULL;
 	}
 	free(copy);
 	copy = NULL;
@@ -57,7 +60,7 @@ char *_getpath(void)
         return (NULL);
 
     while (strncmp(environ[index], "PATH=", 5))
-        index++;
+	    index++;
 
     return (environ[index]);
 }
