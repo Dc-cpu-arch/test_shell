@@ -12,22 +12,10 @@ char *read_line(void)
 	char *line = NULL;
 	size_t bufsz = 0;
 
-	if (getline(&line, &bufsz, stdin) == -1)
+	if (getline(&line, &bufsz, stdin) == EOF && isatty(STDIN_FILENO) == 1)
 	{
-		if (*line == EOF || isatty(STDIN_FILENO))
-		{
-			write(STDOUT_FILENO, "\n", 1);
-			return (line);
-		}
-		if (feof(stdin))
-		{
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			perror("readline");
-			exit(EXIT_FAILURE);
-		}
+		write(STDOUT_FILENO, "\n", 1);
+		exit(EXIT_FAILURE);
 	}
 
 	if (cmp(line) == 99)

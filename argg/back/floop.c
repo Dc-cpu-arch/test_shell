@@ -12,7 +12,8 @@ void floop(char *envp[])
 	int status;
 
 	do {
-		printf("$ ");
+		if (isatty(STDIN_FILENO) == 1)
+			write(STDOUT_FILENO, "$ ", 2);
 		line = read_line();
 		args = split_line(line);
 		status = execute(line, args, envp);
