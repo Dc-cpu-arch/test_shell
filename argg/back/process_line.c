@@ -3,8 +3,8 @@
 #define DELIM " \t\r\n\a"
 
 /**
- *
- *
+ * read_line - read the user input
+ * Return: line
  */
 
 char *read_line(void)
@@ -14,9 +14,14 @@ char *read_line(void)
 
 	if (getline(&line, &bufsz, stdin) == -1)
 	{
+		if (*line == EOF || isatty(STDIN_FILENO))
+		{
+			write(STDOUT_FILENO, "\n", 1);
+			return (line);
+		}
 		if (feof(stdin))
 		{
-			exit(EXIT_SUCCESS);
+			exit(EXIT_FAILURE);
 		}
 		else
 		{
@@ -27,39 +32,43 @@ char *read_line(void)
 
 	if (cmp(line) == 99)
 	{
-		free (line);
+		free(line);
 		exit(EXIT_SUCCESS);
 		return (0);
 	}
-	else
-		return (line);
+	return (line);
 }
 
 /**
- *
- *
- *
+ * split_line - Split the args passed
+ * @line: input of user
+ * Return: tokens or exit_failure
  */
 char **split_line(char *line)
 {
 	int bufsz = BUFSZ;
 	int i = 0;
-	char **tokens = malloc(bufsz * sizeof(char*));
+	char **tokens = malloc(bufsz * sizeof(char *));
 	char *token;
-	if (!tokens) {
+
+	if (!tokens)
+	{
 		fprintf(stderr, "Error allocating memory\n");
 		exit(EXIT_FAILURE);
 	}
 
 	token = strtok(line, DELIM);
-	while (token != NULL) {
+	while (token != NULL)
+	{
 		tokens[i] = token;
 		i++;
 
-		if (i >= bufsz) {
+		if (i >= bufsz)
+		{
 			bufsz += BUFSZ;
-			tokens = realloc(tokens, bufsz * sizeof(char*));
-			if (!tokens) {
+			tokens = realloc(tokens, bufsz * sizeof(char *));
+			if (!tokens)
+			{
 				fprintf(stderr, "Error allocating memory\n");
 				exit(EXIT_FAILURE);
 			}
