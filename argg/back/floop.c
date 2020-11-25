@@ -1,12 +1,11 @@
 #include "shell.h"
 
 /**
- *
- *
- *
+ * floop - keeps the loop of prompt
+ * @envp: environment
  */
 
-void floop(char * envp[])
+void floop(char *envp[])
 {
 	char *line;
 	char **args;
