@@ -2,7 +2,7 @@
 
 /**
  * main - executes a loop that prints a prompt while true.
- * @argc: number of arguments.
+ * @argc: num of arguments.
  * @argv: vector of arguments.
  * @envp: environ variable.
  * Return: EXIT_SUCCESS

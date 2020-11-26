@@ -2,7 +2,7 @@
 
 /**
  * cmp - "Compare the user input for exit or env"
- * @line: user input
+ * @line: user input.
  * Return: 99 for exit, 0 for env and 1 if none of those
  */
 

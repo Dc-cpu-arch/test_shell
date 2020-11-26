@@ -2,7 +2,7 @@
 
 /**
  * _strtok - function that tokenize a string like strtok.
- * @s: string.
+ * @s: string input.
  * @delm: delimiter.
  * Return: string tokenized.
  */

@@ -4,7 +4,7 @@
 
 /**
  * read_line - read the user input
- * Return: line
+ * Return: line.
  */
 
 char *read_line(void)

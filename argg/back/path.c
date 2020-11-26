@@ -2,7 +2,7 @@
 
 /**
  * path - gets the appropriate directory for a given command from stdout.
- * @line: command line input.
+ * @line: command line user input.
  * @args: possible arguments.
  * Return: the execution of the given command, otherwise -1.
  */

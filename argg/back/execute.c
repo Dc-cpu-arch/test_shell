@@ -2,7 +2,7 @@
 /**
  * execute - executes a command get from stdout.
  * @line: command line input.
- * @args: possible arguments .
+ * @args: possible arguments.
  * @envp: environment variable.
  * Return: 0 if it's working, otherwise 1..
  */
