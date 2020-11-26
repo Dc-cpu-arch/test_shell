@@ -18,12 +18,6 @@ char *read_line(void)
 		exit(EXIT_FAILURE);
 	}
 
-	if (cmp(line) == 99)
-	{
-		free(line);
-		exit(EXIT_SUCCESS);
-		return (0);
-	}
 	return (line);
 }
 
@@ -41,7 +35,7 @@ char **split_line(char *line)
 
 	if (!tokens)
 	{
-		fprintf(stderr, "Error allocating memory\n");
+		perror("Error allocating memory");
 		exit(EXIT_FAILURE);
 	}
 
@@ -54,10 +48,11 @@ char **split_line(char *line)
 		if (i >= bufsz)
 		{
 			bufsz += BUFSZ;
-			tokens = realloc(tokens, bufsz * sizeof(char *));
+			tokens = NULL;
+			tokens = malloc(bufsz * sizeof(char *));
 			if (!tokens)
 			{
-				fprintf(stderr, "Error allocating memory\n");
+				perror("Error allocating memory");
 				exit(EXIT_FAILURE);
 			}
 		}

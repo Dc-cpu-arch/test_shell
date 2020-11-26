@@ -3,9 +3,10 @@
 /**
  * floop - keeps the loop of prompt
  * @envp: environment
+ * Return: 0
  */
 
-void floop(char *envp[])
+int floop(char *envp[])
 {
 	char *line;
 	char **args;
@@ -17,7 +18,14 @@ void floop(char *envp[])
 		line = read_line();
 		args = split_line(line);
 		status = execute(line, args, envp);
+		if (cmp(line) == 99)
+		{
+			free(line);
+			free(args);
+			return (127);
+		}
 		free(line);
 		free(args);
 	} while (status == 1);
+	return (0);
 }

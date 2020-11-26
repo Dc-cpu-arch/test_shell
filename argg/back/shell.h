@@ -12,7 +12,7 @@
 typedef struct stat stat_t;
 
 extern char **environ;
-void floop(char *envp[]);
+int floop(char *envp[]);
 char **_strtok(char *s, char *delm);
 char *read_line(void);
 char *_getenv(const char *name, char **env);

@@ -9,8 +9,8 @@
 int cmp(char *line)
 {
 
-	if (line[strlen(line + 1)] == '\n')
-		line[strlen(line + 1)] = '\0';
+	if (line[_strlen(line + 1)] == '\n')
+		line[_strlen(line + 1)] = '\0';
 
 	if (_strcmp(line, "exit") == 0)
 	{

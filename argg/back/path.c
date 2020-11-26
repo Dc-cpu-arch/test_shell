@@ -6,50 +6,55 @@
  * @args: possible arguments.
  * Return: the execution of the given command, otherwise -1.
  */
+
 int path(char *line, char **args)
 {
 	char *copy, *tokens, *tmp, *command, *tmpp;
-	char *path, *address, *test;
-	char tmp2[1] = "/";
-	int i = 0, j = 1, h = 0;
-	char *list[1024];
-
+	char *path, *address, tmp2[1] = "/", *list[1024];
+	int j;
 	struct stat st;
 
 	copy = _getenv("PATH", environ);
 	tmp = _strdup(line);
-	address = _strdup(line);
 	tokens = strtok(copy, "PATH=");
 	tmpp = _strdup(tokens);
 	list[0] = strtok(tmpp, ":");
-
-	while (tmpp != NULL)
-		{
-			list[j] = strtok(NULL, ":");
-			j++;
-		}
-	command = _strcat(tmp2, tmp);
-	printf("asd");
-
-	while (list[j])
+	//command = _strcat(tmp2, tmp);
+	j = 1;
+	while (tokens)
 	{
-		printf("PATH IS %s\n", path);
-		path = _strcat(list[j], command);
+		tokens = strtok(NULL, ":");
+		list[j] = tokens;
+		j++;
+	}
+	j = 0;
+	for (; list[j]; j++)
+	{
+		tmpp = _strdup(list[j]);
+		command = _strcat(tmp2, tmp);
+		path = _strcat(tmpp, command);
 		printf("PATH IS %s\n", path);
 		if (stat(path, &st) == 0)
 		{
+			printf("funciona?\n");
 			free(address);
 			address = NULL;
 			address = _strdup(path);
 			return (execve(address, args, NULL));
 		}
-		free(path);
-		h++;
+		else
+		{
+			printf("gheey");
+			free(tmpp);
+			free(path);
+		}
 	}
+	free (address);
 	free(copy);
 	copy = NULL;
 	free(command);
 	command = NULL;
+	printf("HELLO\n");
 	return (-1);
 }
 
@@ -61,7 +66,7 @@ int path(char *line, char **args)
  */
 char *_getenv(const char *name, char **env)
 {
-	int i, j, check, k = 0, l = 0;
+	int i, j, check, l = 0;
 
 	if (!env)
 		return (NULL);
