@@ -11,7 +11,7 @@ int path(char *line, char **args)
 {
 	char *copy, *tokens, *tmp, *command, *tmpp;
 	char *path, *address, tmp2[1] = "/", *list[1024];
-	int j;
+	int j = 1;
 	struct stat st;
 
 	copy = _getenv("PATH", environ);
@@ -19,42 +19,36 @@ int path(char *line, char **args)
 	tokens = strtok(copy, "PATH=");
 	tmpp = _strdup(tokens);
 	list[0] = strtok(tmpp, ":");
-	//command = _strcat(tmp2, tmp);
-	j = 1;
 	while (tokens)
 	{
 		tokens = strtok(NULL, ":");
 		list[j] = tokens;
 		j++;
 	}
-	j = 0;
-	for (; list[j]; j++)
+
+	for (j = 0; j < 5; j++)
 	{
 		tmpp = _strdup(list[j]);
-		command = _strcat(tmp2, tmp);
-		path = _strcat(tmpp, command);
-		printf("PATH IS %s\n", path);
-		if (stat(path, &st) == 0)
+		//command = _strcat(tmp2, tmp);
+		//path = _strcat(tmpp, command);
+		_strcat(tmp2, tmp);
+		_strcat(tmpp, tmp2);
+		printf("TMPP IS %s\n", tmpp);
+		if (stat(tmpp, &st) == 0)
 		{
-			printf("funciona?\n");
-			free(address);
+			printf("FUNCIONA\n");
 			address = NULL;
-			address = _strdup(path);
+			address = _strdup(tmpp);
 			return (execve(address, args, NULL));
 		}
-		else
-		{
-			printf("gheey");
-			free(tmpp);
-			free(path);
-		}
+		printf("asdfasdfasdf\n");
+		free(tmpp);
+		free(path);
 	}
-	free (address);
 	free(copy);
 	copy = NULL;
 	free(command);
 	command = NULL;
-	printf("HELLO\n");
 	return (-1);
 }
 

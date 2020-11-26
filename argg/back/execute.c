@@ -27,23 +27,25 @@ int execute(char *line, char **args, char *envp[])
 	}
 	else
 	{
-		if (cmp(line) == 0)
+		if ((execve(line, args, NULL) == -1))
 		{
-			for (; envp[i]; i++)
+			if (cmp(line) == 0)
 			{
-				length = _strlen(envp[i]);
-				write(STDOUT_FILENO, envp[i], length);
-				write(STDOUT_FILENO, "\n", 1);
+				for (; envp[i]; i++)
+				{
+					length = _strlen(envp[i]);
+					write(STDOUT_FILENO, envp[i], length);
+					write(STDOUT_FILENO, "\n", 1);
+				}
+				return (0);
 			}
-			return (0);
+			else if (cmp(line) == 1)
+			{
+				path(line, args);
+				perror("Does not execute, write valid command");
+				return (0);
+			}
 		}
-		else if (cmp(line) == 1)
-		{
-			path(line, args);
-			return (0);
-		}
-		else
-			perror("Does not execute, write valid command");
 	}
 	return (1);
 }
